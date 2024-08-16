@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 200vh;
+            /* For scrolling demonstration */
+        }
+        
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        #navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        
+        #navbar li {
+            display: inline;
+            margin: 0 15px;
+        }
+        
+        #navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        #navbar a:hover {
+            color: #ffd700;
+        }
+        
+        .content {
+            padding-top: 80px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Welcome to Our Landing Page</h1>
+        <p>Scroll down to see the navigation menu change!</p>
+    </div>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        const navItems = navbar.getElementsByTagName('a');
+
+        // Change navbar on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+                for (let item of navItems) {
+                    item.style.color = '#333';
+                }
+            } else {
+                navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+                for (let item of navItems) {
+                    item.style.color = 'white';
+                }
+            }
+        });
+
+        // Add hover effect
+        for (let item of navItems) {
+            item.addEventListener('mouseover', () => {
+                item.style.color = '#ffd700';
+            });
+            item.addEventListener('mouseout', () => {
+                item.style.color = window.scrollY > 100 ? '#333' : 'white';
+            });
+        }
+    </script>
+</body>
+
+</html>
